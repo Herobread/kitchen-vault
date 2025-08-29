@@ -4,11 +4,97 @@ import { meals } from "../meal.js"
 
 const list = document.getElementById("meal-list")
 
-rerenderList()
+// URL state helpers
+function getStateFromURL() {
+    const params = new URLSearchParams(window.location.search)
+    return {
+        query: params.get("q") || "",
+        sort: params.get("sort") || "",
+    }
+}
 
-window.query = null
-window.sort = null
+function setStateInURL({ query, sort }, { replace = false } = {}) {
+    const url = new URL(window.location.href)
+    const params = url.searchParams
+    if (query !== undefined) {
+        if (query) params.set("q", query)
+        else params.delete("q")
+    }
+    if (sort !== undefined) {
+        if (sort) params.set("sort", sort)
+        else params.delete("sort")
+    }
+    const newURL =
+        url.pathname + (params.toString() ? `?${params.toString()}` : "") + url.hash
+    if (replace) {
+        history.replaceState(null, "", newURL)
+    } else {
+        history.pushState(null, "", newURL)
+    }
+}
 
+function rerenderList() {
+    list.innerHTML = ""
+
+    const { query, sort } = getStateFromURL()
+
+    if (!meals || meals.length === 0) {
+        const notFound = document.createElement("p")
+
+        notFound.className = "not-found-text"
+        notFound.textContent = `No records.`
+
+        list.appendChild(notFound)
+
+        return
+    }
+
+    if (sort === "name-asc") {
+        meals.sort((a, b) => {
+            return a.name.localeCompare(b.name)
+        })
+    }
+    if (sort === "name-desc") {
+        meals.sort((a, b) => {
+            return b.name.localeCompare(a.name)
+        })
+    }
+
+    let isFound = false
+
+    const q = (query || "").toLowerCase()
+
+    meals.forEach((entryData) => {
+        if (!q) {
+            list.appendChild(createEntry(entryData))
+            isFound = true
+            return
+        }
+
+        if (
+            entryData.name.toLowerCase().includes(q) ||
+            (entryData.description && entryData.description.toLowerCase().includes(q)) ||
+            (Array.isArray(entryData.tags) &&
+                entryData.tags.some(tag => String(tag).toLowerCase().includes(q)))
+        ) {
+            isFound = true
+            list.appendChild(createEntry(entryData))
+        }
+    })
+
+    if (!isFound) {
+        const notFound = document.createElement("p")
+
+        notFound.className = "not-found-text"
+        if (query) {
+            notFound.textContent = `Nothing found when searching for "${query}"`
+        } else {
+            notFound.textContent = `No records.`
+        }
+
+        list.appendChild(notFound)
+    }
+}
 
 export function createEntry(mealData) {
     const template = document.createElement("template")
@@ -37,87 +123,54 @@ export function createEntry(mealData) {
     return element
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+const search = document.getElementById("search-input")
+const filter = document.getElementById("filter")
 
-function rerenderList() {
-    list.innerHTML = ""
-  
-    if (!meals || meals.length === 0) {
-        const notFound = document.createElement("p")
+function syncControlsFromURL() {
+    const params = new URLSearchParams(window.location.search)
+    const hasQuery = params.has("q")
+    const hasSort = params.has("sort")
+    const { query, sort } = getStateFromURL()
 
-        notFound.className = "not-found-text"
-        notFound.textContent = `No records.`
-
-        list.appendChild(notFound)
-
-        return
-    }
-
-    if (window.sort === "name-asc") {
-        meals.sort((a, b) => {
-            return a.name.localeCompare(b.name)
-        })
-    }
-    if (window.sort === "name-desc") {
-        meals.sort((a, b) => {
-            return b.name.localeCompare(a.name)
-        })
-    }
-
-    let isFound = false
-
-    meals.forEach((entryData) => {
-        if (window.query == null || window.query == "") {
-            list.appendChild(createEntry(entryData))
-            isFound = true
-            return
+    if (search) {
+        if (hasQuery) {
+            search.value = query || ""
         }
+        // else leave the input’s default value
+    }
 
-        if (
-            entryData.name.toLowerCase().includes(window.query.toLowerCase()) ||
-            entryData.description.toLowerCase().includes(window.query.toLowerCase()) ||
-            (Array.isArray(entryData.tags) &&
-            entryData.tags.some(tag => tag.toLowerCase().includes(window.query.toLowerCase())))
-        ) {
-            isFound = true
-            list.appendChild(createEntry(entryData))
-        }
-    })
-
-    if (!isFound) {
-        const notFound = document.createElement("p")
-
-        notFound.className = "not-found-text"
-        if (window.query) {
-            notFound.textContent = `Nothing found when searching for "${window.query}"`
+    if (filter) {
+        if (hasSort) {
+            filter.value = sort || ""
         } else {
-            notFound.textContent = `No records.`
+            // Use the select’s default (from HTML) and put it into the URL
+            const defaultSort = filter.value || ""
+            if (defaultSort) {
+                setStateInURL({ sort: defaultSort }, { replace: true })
+                filter.value = defaultSort
+            }
         }
-
-        list.appendChild(notFound)
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const search = document.getElementById("search-input")
-
 search.addEventListener("input", (e) => {
     e.preventDefault()
-
-    window.query = e.target.value
-
+    setStateInURL({ query: e.target.value }, { replace: false })
     rerenderList()
 })
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const filter = document.getElementById("filter")
 
 filter.addEventListener("change", (e) => {
     e.preventDefault()
-
-    window.sort = e.target.value
-
+    setStateInURL({ sort: e.target.value }, { replace: false })
     rerenderList()
 })
+
+// Keep UI and list in sync with browser navigation
+window.addEventListener("popstate", () => {
+    syncControlsFromURL()
+    rerenderList()
+})
+
+// Initial sync from URL and render
+syncControlsFromURL()
+rerenderList()
