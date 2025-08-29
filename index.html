@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kitchen Vault</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <script type="module" src="scripts/app.js" defer></script>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="header">
+            <h1>Kitchen Vault</h1>
+            <p>View the meal catalogue.</p>
+        </div>
+        <div class="search-filter-container">
+            <div class="search-container">
+                <img src="public/search.svg" alt="" class="search-icon" />
+                <input
+                    type="text"
+                    placeholder="Search by name/type/description..."
+                    class="search-input"
+                    id="search-input"
+                />
+            </div>
+            <select class="filter" id="filter">
+                <option value="none">Sort</option>
+                <option value="name-asc">Name - asc</option>
+                <option value="name-desc">Name - desc</option>
+            </select>
+        </div>
+
+        <ul id="meal-list" class="meal-list"></ul>
+    </body>
+</html>
