@@ -94,4 +94,14 @@ export const meals = [
     tags: ["easy", "side", "fast", "healthy"],
     description: "Steamed rice, don't forget the right proportions."
   },
+  {
+    name: "Egg noodle",
+    tags: ["easy", "side", "super-fast", "healthy"],
+    description: "Better version of instant noodle"
+  },
+  {
+    name: "Kale crips",
+    tags: ["easy", "snack", "fast", "healthy"],
+    description: "Delicious helthy crisps"
+  },
 ];
