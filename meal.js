@@ -241,7 +241,12 @@ export const meals = [
   },
   {
     name: "Stuffed pepper or other veg",
-    tags: ["???", "main","side", "???"],
+    tags: ["???", "main", "side", "???"],
     description: "A lot of mince disguised as a vegetable"
+  },
+  {
+    name: "Beef stir fry",
+    tags: ["easy", "main", "fast"],
+    description: "Pan + beef + spices"
   },
 ];
