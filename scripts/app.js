@@ -107,9 +107,9 @@ export function createEntry(mealData) {
         <li class="card meal-card" data-entry-id="">
             <div class="meal-list-item-container">
                 <h3 class="meal-list-item-header"></h3>
-                <p class="meal-list-item-tags"></p>
+                <p class="meal-list-item-description"></p>
             </div>
-            <p class="meal-list-item-description"></p>
+            <p class="meal-list-item-tags"></p>
         </li>
     `
 

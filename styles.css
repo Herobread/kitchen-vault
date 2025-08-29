@@ -54,6 +54,10 @@ body {
     gap: 4px;
 }
 
+.meal-list-item-tags {
+    color: #797979;
+}
+
 .meal-list-item-type {
     color: #797979;
 }
