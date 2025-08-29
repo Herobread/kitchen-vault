@@ -101,10 +101,10 @@ export function createEntry(mealData) {
 
     const html = String.raw
 
-    const { name, tags, description, id } = mealData
+    const { name, tags, description, url } = mealData
 
     template.innerHTML = html`
-        <li class="card meal-card" data-entry-id="">
+        <li class="card meal-card">
             <div class="meal-list-item-container">
                 <h3 class="meal-list-item-header"></h3>
                 <p class="meal-list-item-description"></p>
@@ -114,9 +114,20 @@ export function createEntry(mealData) {
     `
 
     const element = template.content.firstElementChild
+    const header = element.querySelector(".meal-list-item-header")
 
-    element.querySelector(".meal-list-item-header").textContent = name
-    element.querySelector(".meal-list-item-tags").textContent = tags && tags.join && tags.join(" · ")
+    if (url) {
+        const link = document.createElement("a")
+        link.href = url
+        link.textContent = name
+        link.target = "_blank"
+        link.rel = "noopener noreferrer"
+        header.appendChild(link)
+    } else {
+        header.textContent = name
+    }
+
+    element.querySelector(".meal-list-item-tags").textContent = tags?.join(" · ")
     element.querySelector(".meal-list-item-description").textContent =
         description
 

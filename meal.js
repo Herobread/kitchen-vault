@@ -22,12 +22,14 @@ export const meals = [
   {
     name: "Chocolate chip cookies",
     tags: ["easy", "dessert", "slow", "snack", "showstopper", "vegeterian"],
-    description: "Indulgent chocolate chip cookies."
+    description: "Indulgent chocolate chip cookies.",
+    url: "https://www.youtube.com/watch?v=rEdl2Uetpvo"
   },
   {
     name: "Tiramisu Semifredo",
     tags: ["medium", "dessert", "very-slow", "showstopper", "vegeterian"],
-    description: "Extra rich and creamy dessert."
+    description: "Extra rich and creamy dessert.",
+    url: "https://www.youtube.com/watch?v=87V4nizNJiE"
   },
   {
     name: "Frirata",
@@ -37,12 +39,14 @@ export const meals = [
   {
     name: "German pancake",
     tags: ["easy", "main", "medium", "breakfast", "pancake", "showstopper", "vegeterian"],
-    description: "Big puffy pancake with any delicious toppings you want"
+    description: "Big puffy pancake with any delicious toppings you want",
+    url: "https://www.youtube.com/watch?v=6gpoV6zCHkQ"
   },
   {
     name: "French omelette",
     tags: ["insane", "main", "fast", "breakfast", "vegeterian"],
-    description: "3 eggs rolled up into delicious custardy roll."
+    description: "3 eggs rolled up into delicious custardy roll.",
+    url: "https://www.youtube.com/watch?v=A-pqjLgFCqw"
   },
   {
     name: "Pasta",
@@ -57,7 +61,8 @@ export const meals = [
   {
     name: "Fries",
     tags: ["easy", "side", "fast", "snack", "frozen", "vegan"],
-    description: "Tesco fries cooked from frozen and ready in 20 min."
+    description: "Tesco fries cooked from frozen and ready in 20 min.",
+    url: "https://www.tesco.com/groceries/en-GB/shop/frozen-food/chips-potatoes-and-sides/chips-and-french-fries/frozen-chips-french-fries"
   },
   {
     name: "Tomato mozarella salad",
@@ -87,12 +92,14 @@ export const meals = [
   {
     name: "Roast chicken spatchcock",
     tags: ["medium", "main", "very-slow", "showstopper", "healthy"],
-    description: "Classic roast chicken"
+    description: "Classic roast chicken",
+    url: "https://www.youtube.com/watch?v=pod4x5NJoYI"
   },
   {
     name: "Rice",
     tags: ["easy", "side", "fast", "healthy", "vegan"],
-    description: "Steamed rice, don't forget the right proportions."
+    description: "Steamed rice, don't forget the right proportions.",
+    url: "https://www.youtube.com/watch?v=Jf75I9LKhvg"
   },
   {
     name: "Potato mash",
