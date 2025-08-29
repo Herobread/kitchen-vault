@@ -249,4 +249,9 @@ export const meals = [
     tags: ["easy", "main", "fast"],
     description: "Pan + beef + spices"
   },
+  {
+    name: "Crispy potato cubes",
+    tags: ["medium", "side", "slow"],
+    description: "crunchy (hopefully)"
+  },
 ];
