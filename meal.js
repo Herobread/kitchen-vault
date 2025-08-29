@@ -67,7 +67,7 @@ export const meals = [
   {
     name: "Youghurt + oats + fruits",
     tags: ["easy", "main", "super-fast", "breakfast", "healthy", "vegeterian"],
-    description: "Ver fast and healthy start of a day."
+    description: "Very fast and healthy start of a day."
   },
   {
     name: "Tomato salad",
@@ -148,5 +148,100 @@ export const meals = [
     name: "Chocolate cake",
     tags: ["???", "dessert", "very-slow"],
     description: "Mashallah"
+  },
+  {
+    name: "Coleslaw",
+    tags: ["easy", "salad", "fast", "vegeterian", "healthy"],
+    description: "Shredded cabbage and carrots with creamy dressing."
+  },
+  {
+    name: "Water",
+    tags: ["easy", "drink", "super-fast"],
+    description: "The best drink ever"
+  },
+  {
+    name: "Mojito",
+    tags: ["easy", "drink", "super-fast", "cocktail", "alcoholic"],
+    description: "Lime, mint, sugar, soda and rum over ice."
+  },
+  {
+    name: "Croissant (frozen)",
+    tags: ["easy", "snack", "slow", "breakfast", "frozen"],
+    description: "Bake-from-frozen croissants until puffed and golden."
+  },
+  {
+    name: "Sunrise mocktail",
+    tags: ["easy", "drink", "super-fast", "mocktail", "non-alcoholic"],
+    description: "Layered orange juice and grenadine over ice."
+  },
+  {
+    name: "Lemonade",
+    tags: ["easy", "drink", "super-fast", "mocktail", "non-alcoholic", "healthy"],
+    description: "Fresh lemon juice, water and sugar to taste."
+  },
+  {
+    name: "Steak",
+    tags: ["medium", "main", "fast", "showstopper"],
+    description: "Pan-seared steak with butter baste and rest."
+  },
+  {
+    name: "Ayran",
+    tags: ["easy", "drink", "super-fast", "non-alcoholic", "vegeterian", "healthy"],
+    description: "Yoghurt blended with cold water and a pinch of salt."
+  },
+  {
+    name: "Okra",
+    tags: ["medium", "side", "slow", "healthy", "vegan", "vegeterian"],
+    description: "Stewed or sautéed okra with aromatics."
+  },
+  {
+    name: "Cordial",
+    tags: ["easy", "drink", "very-slow", "non-alcoholic"],
+    description: "Homemade fruit syrup concentrate for mixing."
+  },
+  {
+    name: "Crepes",
+    tags: ["easy", "dessert", "slow", "breakfast", "vegeterian"],
+    description: "Thin pancakes with sweet or savoury fillings."
+  },
+  {
+    name: "Lasagna",
+    tags: ["medium", "main", "very-slow", "showstopper"],
+    description: "Layered pasta bake with sauce and cheese."
+  },
+  {
+    name: "Giga platter (chicken, potatoes, veggies)",
+    tags: ["medium", "main", "slow", "showstopper", "healthy"],
+    description: "Big roasting tray with chicken, potatoes and mixed veg."
+  },
+  {
+    name: "Dumplings",
+    tags: ["medium", "main", "slow"],
+    description: "Boiled or pan-fried dumplings with dipping sauce."
+  },
+  {
+    name: "Pain au chocolat",
+    tags: ["easy", "snack", "slow", "breakfast"],
+    description: "Flaky pastry with a rich chocolate bar inside."
+  },
+  {
+    name: "Schnitzel",
+    tags: ["medium", "main", "fast", "showstopper"],
+    description: "Breaded, shallow-fried cutlet (chicken, pork or veal)."
+  },
+  {
+    name: "Pea soup",
+    tags: ["easy", "main", "side", "slow", "healthy", "vegeterian"],
+    description: "Smooth or chunky pea soup with herbs."
+  },
+  {
+    name: "Garlic bread",
+    tags: ["easy", "main", "fast", "healthy", "vegeterian"],
+    description: "Delicious side for soup or indian kitchen."
+  },
+  {
+    name: "Stuffed pepper or other veg",
+    tags: ["???", "main","side", "???"],
+    description: "A lot of mince disguised as a vegetable"
   },
 ];
