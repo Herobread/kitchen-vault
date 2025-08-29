@@ -254,4 +254,9 @@ export const meals = [
     tags: ["medium", "side", "slow"],
     description: "crunchy (hopefully)"
   },
+  {
+    name: "Crispy duck salad",
+    tags: ["???", "main", "side", "???"],
+    description: "Inspired by the Ivy restaurant."
+  },
 ];
