@@ -75,7 +75,9 @@ function rerenderList() {
             entryData.name.toLowerCase().includes(q) ||
             (entryData.description && entryData.description.toLowerCase().includes(q)) ||
             (Array.isArray(entryData.tags) &&
-                entryData.tags.some(tag => String(tag).toLowerCase().includes(q)))
+                entryData.tags.some(tag => String(tag).toLowerCase().includes(q))) ||
+            (entryData.difficulty && entryData.difficulty.toLowerCase().includes(q)) ||
+            (entryData.time && entryData.time.toLowerCase().includes(q))
         ) {
             isFound = true
             list.appendChild(createEntry(entryData))
@@ -101,7 +103,7 @@ export function createEntry(mealData) {
 
     const html = String.raw
 
-    const { name, tags, description, url } = mealData
+    const { name, tags, description, url, difficulty, time } = mealData
 
     template.innerHTML = html`
         <li class="card meal-card">
@@ -109,7 +111,12 @@ export function createEntry(mealData) {
                 <h3 class="meal-list-item-header"></h3>
                 <p class="meal-list-item-description"></p>
             </div>
-            <p class="meal-list-item-tags"></p>
+            <i>
+                <p class="meal-list-item-tags"></p>
+            </i>
+            <div class="meal-meta">
+                <span>${difficulty}</span> · <span>${time}</span>
+            </div>
         </li>
     `
 
